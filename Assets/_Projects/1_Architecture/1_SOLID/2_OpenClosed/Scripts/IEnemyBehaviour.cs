@@ -24,4 +24,14 @@ namespace OpenClosed
             Debug.Log("Przeciwnik broni siê!");
         }
     }
+
+    public class StationaryBehaviour : IEnemyBehavior
+    {
+        public int cd;
+
+        public void PerformAction()
+        {
+            Debug.Log("");
+        }
+    }
 }

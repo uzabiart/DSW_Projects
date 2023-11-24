@@ -9,8 +9,8 @@ namespace OpenClosed
         public enum EnemyType
         {
             Aggressive,
-            Defensive
-            // Dodanie nowego typu wymaga zmiany tej enumeracji
+            Defensive,
+            Stationary,
         }
 
         public EnemyType type;
@@ -36,6 +36,16 @@ namespace OpenClosed
             {
                 Debug.Log("Przeciwnik broni siê!");
             }
+            else if (type == EnemyType.Stationary)
+            {
+                StationaryImplementation();
+                Debug.Log("Enemy is stationary");
+            }
+        }
+
+        public void StationaryImplementation()
+        {
+            //po czasie zmien inny state
         }
     }
 }

@@ -1,9 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace DependencyInversion
 {
+    public class BattleManager
+    {
+        public Enemy target;
+        public static Action<Enemy> OnTargetSwapped;
+
+        public void Init()
+        {
+            OnTargetSwapped = UpdateTarget;
+        }
+
+        public void UpdateTarget(Enemy newTarget)
+        {
+            newTarget = new Troll();
+            target = newTarget;
+        }
+
+        public void ResolveTurn()
+        {
+            target.TakeDamge();
+        }
+    }
+
     public abstract class Enemy
     {
         public IHealth healthSystem;
@@ -20,7 +43,7 @@ namespace DependencyInversion
     }
     public class Troll : Enemy
     {
-        public IHealth healthSystem = new StandardHealth();
+        public IHealth healthSystem = new ArmoredHealth();
         public IMovement movementSystem = new AgileMovement();
     }
 
@@ -41,7 +64,7 @@ namespace DependencyInversion
     {
         public void TakeDamage()
         {
-            Debug.Log("Take reduced damage");
+            Debug.Log("Take 2x less damage");
         }
     }
 
