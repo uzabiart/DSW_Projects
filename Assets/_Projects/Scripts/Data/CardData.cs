@@ -77,6 +77,16 @@ public class Dash : Effect
         return $"{targetting.GetDescription()} Dashed and gained increased speed";
     }
 }
+public class CreateMinion : Effect
+{
+    public string minionName;
+    public int howManyMinions;
+
+    public override string PlayEffect()
+    {
+        return $"{targetting.GetTargets()} created {minionName}";
+    }
+}
 
 // TARGETTING
 public interface ITargetting
